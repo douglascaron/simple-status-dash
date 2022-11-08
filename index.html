@@ -1,0 +1,28 @@
+
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - Status Board</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+
+<dashboard class="dashboard">
+    <dashboard-header title="Datacenter">
+        <dashboard-clock digital="true" binary="true" />
+    </dashboard-header>
+    <server-list>
+        <server v-for="(server, index) in servers" :class="{ 'has-failed': !server.status }" :type="server.type" @click.native="updateServerStatus(index)">
+            <div class="server"><div class="server-icon fa fa-globe"></div> <ul class="server-details"><li>Hostname:<span class="data">VPN#1</span></li> <li>Status:<span class="data signal">ONLINE</span></li> <li>Address:<span class="data">192.168.0.24</span></li></ul></div>
+            <br>
+            <div class="server has-failed"><div class="server-icon fa fa-tasks"></div> <ul class="server-details"><li>Hostname:<span class="data">SERVER#1</span></li> <li>Status:<span class="data signal">OFFLINE</span></li> <li>Address:<span class="data">192.168.0.25</span></li></ul></div>
+            <br>
+            <div class="server"><div class="server-icon fa fa-tasks"></div> <ul class="server-details"><li>Hostname:<span class="data">SERVER#2</span></li> <li>Status:<span class="data signal">ONLINE</span></li> <li>Address:<span class="data">192.168.0.26</span></li></ul></div>
+            <br>
+            <div class="server has-failed"><div class="server-icon fa fa-globe"></div> <ul class="server-details"><li>Hostname:<span class="data">VPN#2</span></li> <li>Status:<span class="data signal">OFFLINE</span></li> <li>Address:<span class="data">192.168.0.37</span></li></ul></div>
+            <br>
+        </server>
+    </server-list>
+</dashboard>
